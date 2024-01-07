@@ -39,10 +39,18 @@ func sumAndProduct(nums ...int) (int, int) {
 	return sum, product
 }
 
+// name return variable in return statement
+func doubleAndHalf(n int) (double, half int) {
+	double = n * 2
+	half = n / 2
+	return
+}
+
 func main() {
 	printPi()
 	fmt.Println(sum2(1, 2))
 	fmt.Println(sumN(1, 3, 5, 6))
 	var sum1, product1 = sumAndProduct(1, 3, 5, 7)
 	fmt.Printf("sum: %d, product: %d \n", sum1, product1)
+	fmt.Println(doubleAndHalf(4))
 }
