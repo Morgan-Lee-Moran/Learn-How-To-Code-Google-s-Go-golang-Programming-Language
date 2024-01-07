@@ -65,6 +65,33 @@ func basicType() {
 	fmt.Println(si)
 }
 
+type helloWorld struct {
+	name string
+	age  int
+}
+
+func (h helloWorld) printHelloWorld() {
+	// go do not support direct concat of string and int
+	// "Hellow " + h.age is invalid
+	fmt.Printf("Hello %s age: %d\n", h.name, h.age)
+}
+
+// example of declear a interface and implement
+/**
+In Go, unlike languages like Java, there is no explicit declaration of intent when a type implements an interface. Instead, Go uses a concept known as structural typing or duck typing for interfaces. This means that if a type has all the methods that an interface requires, it implicitly implements that interface. There's no need to explicitly state that a type implements a given interface.
+*/
+type toString interface {
+	toString() string
+}
+
+func (h helloWorld) toString() string {
+	return fmt.Sprintf("Hello %s age: %d\n", h.name, h.age)
+}
+
+func (h helloWorld) print() {
+	fmt.Println(h.toString())
+}
+
 func main() {
 	basicType()
 }
