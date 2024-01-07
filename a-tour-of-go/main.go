@@ -30,8 +30,19 @@ func sumN(nums ...int) int {
 	return total
 }
 
+func sumAndProduct(nums ...int) (int, int) {
+	sum, product := 0, 1
+	for _, n := range nums {
+		sum += n
+		product *= n
+	}
+	return sum, product
+}
+
 func main() {
 	printPi()
 	fmt.Println(sum2(1, 2))
 	fmt.Println(sumN(1, 3, 5, 6))
+	var sum1, product1 = sumAndProduct(1, 3, 5, 7)
+	fmt.Printf("sum: %d, product: %d \n", sum1, product1)
 }
