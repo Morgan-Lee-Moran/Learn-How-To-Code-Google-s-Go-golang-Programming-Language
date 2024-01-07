@@ -65,33 +65,55 @@ func basicType() {
 	fmt.Println(si)
 }
 
-type helloWorld struct {
-	name string
-	age  int
+// example of define a struct
+type HelloWorld struct {
+	Name string
+	Age  int
 }
 
-func (h helloWorld) printHelloWorld() {
+// constructor
+func newHelloWorld(name string, age int) HelloWorld {
+	return HelloWorld{
+		Name: name,
+		Age:  age,
+	}
+
+}
+
+func printHelloWorld(h HelloWorld) {
 	// go do not support direct concat of string and int
 	// "Hellow " + h.age is invalid
-	fmt.Printf("Hello %s age: %d\n", h.name, h.age)
+	fmt.Printf("Hello %s age: %d\n", h.Name, h.Age)
+}
+
+func callHelloWorldConstructorAndPrint() {
+	var hello HelloWorld = newHelloWorld("Kim", 22)
+	printHelloWorld(hello)
 }
 
 // example of declear a interface and implement
 /**
 In Go, unlike languages like Java, there is no explicit declaration of intent when a type implements an interface. Instead, Go uses a concept known as structural typing or duck typing for interfaces. This means that if a type has all the methods that an interface requires, it implicitly implements that interface. There's no need to explicitly state that a type implements a given interface.
 */
-type toString interface {
+type toStringInterface interface {
 	toString() string
 }
 
-func (h helloWorld) toString() string {
-	return fmt.Sprintf("Hello %s age: %d\n", h.name, h.age)
+func (h HelloWorld) toString() string {
+	return fmt.Sprintf("Hi %s age: %d\n", h.Name, h.Age)
 }
 
-func (h helloWorld) print() {
-	fmt.Println(h.toString())
+func callInterfaceToString(t toStringInterface) {
+	fmt.Println(t.toString())
+}
+
+func callHelloWorldConstructorAndInterface() {
+	var hello HelloWorld = newHelloWorld("Kim", 22)
+	callInterfaceToString(hello)
 }
 
 func main() {
 	basicType()
+	callHelloWorldConstructorAndPrint()
+	callHelloWorldConstructorAndInterface()
 }
