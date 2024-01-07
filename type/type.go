@@ -65,6 +65,14 @@ func basicType() {
 	fmt.Println(si)
 }
 
+func defaultValue() {
+	// 0  false ""
+	var intDeafult int
+	var boolDefault bool
+	var stringDefault string
+	fmt.Printf("%d %v %s \n", intDeafult, boolDefault, stringDefault)
+}
+
 // example of define a struct
 type HelloWorld struct {
 	Name string
@@ -121,6 +129,7 @@ func callHelloWorldConstructorAndInterface() {
 
 func main() {
 	basicType()
+	defaultValue()
 	callHelloWorldConstructorAndPrint()
 	callHelloWorldConstructorAndInterface()
 }
