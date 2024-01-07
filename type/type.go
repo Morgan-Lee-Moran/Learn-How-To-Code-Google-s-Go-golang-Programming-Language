@@ -72,12 +72,19 @@ type HelloWorld struct {
 }
 
 // constructor
-func newHelloWorld(name string, age int) HelloWorld {
+func newHelloWorldNameAge(name string, age int) HelloWorld {
 	return HelloWorld{
 		Name: name,
 		Age:  age,
 	}
+}
 
+// constructor overloading is not supported in golang
+func newHelloWorldName(name string) HelloWorld {
+	return HelloWorld{
+		Name: name,
+		Age:  18,
+	}
 }
 
 func printHelloWorld(h HelloWorld) {
@@ -87,7 +94,7 @@ func printHelloWorld(h HelloWorld) {
 }
 
 func callHelloWorldConstructorAndPrint() {
-	var hello HelloWorld = newHelloWorld("Kim", 22)
+	var hello HelloWorld = newHelloWorldNameAge("Kim", 22)
 	printHelloWorld(hello)
 }
 
@@ -108,7 +115,7 @@ func callInterfaceToString(t toStringInterface) {
 }
 
 func callHelloWorldConstructorAndInterface() {
-	var hello HelloWorld = newHelloWorld("Kim", 22)
+	var hello HelloWorld = newHelloWorldName("Lim")
 	callInterfaceToString(hello)
 }
 
