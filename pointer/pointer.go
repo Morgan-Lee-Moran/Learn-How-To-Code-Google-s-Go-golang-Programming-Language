@@ -67,6 +67,19 @@ func WordCount(s string) map[string]int {
 	return count_map
 }
 
+// function as return
+func fibonacci() func() int {
+	a, b := 0, 1
+	return func() int {
+		a, b = b, (a + b)
+		return a
+	}
+}
+
 func main() {
 	pointer()
+	fib := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(fib())
+	}
 }
